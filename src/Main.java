@@ -155,6 +155,7 @@ static void removeItem() {
 
 //search function
 static void searchItem() {
+    showStock();
     System.out.println("Enter the name of the item to search:");
     String searchItem = scan.next();
 
