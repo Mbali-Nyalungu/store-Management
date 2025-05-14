@@ -10,6 +10,7 @@ public class Main {
    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         //this is our store manager
+
         preloadItems();
         while (true) {
             System.out.println("\n--- Store Management System ---");
@@ -42,6 +43,8 @@ public class Main {
                     break;
                 case 6:
  
+
+       
        }
    }
 
