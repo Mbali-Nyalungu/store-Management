@@ -15,6 +15,7 @@ public class Main {
            System.out.println("\n--- Store Management System ---");
            System.out.println("1. Show Stock");
            System.out.println("2. Add New Items");
+           System.out.println("3. Update an Item");
            System.out.print("Choose an option: ");
            int choice = scan.nextInt();
            // scan.next();
@@ -26,6 +27,9 @@ public class Main {
                    break;
                case 2:
                    addNewItem();
+                   break;
+                   case 3:
+                   updateItem();
                    break;
                default:
                    System.out.println("Invalid choice. Try again.");
@@ -90,6 +94,30 @@ public class Main {
            quantities.add(newQuantity);
        }
    }
+   //update
+   static void updateItem() {
+    if (items.isEmpty()) {
+        System.out.println("No items to update.");
+        return;
+    }
+    showStock();
+    System.out.println("Enter the index number of the item you want to update:");
+    int itemIndex = scan.nextInt() - 1;
+    // scan.next();
+
+    if (itemIndex >= 0 && itemIndex < items.size()) {
+        System.out.println("Enter new name:");
+        items.set(itemIndex, scan.next());
+        System.out.println("Enter new price:");
+        prices.set(itemIndex, scan.nextDouble());
+        System.out.println("Enter new quantity:");
+        quantities.set(itemIndex, scan.nextInt());
+        // scan.next(); 
+        System.out.println("Item updated.");
+    } else {
+        System.out.println("Invalid index.");
+    }
+}
 
 
 }
