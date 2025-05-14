@@ -15,6 +15,7 @@ public class Main {
            System.out.println("\n--- Store Management System ---");
            System.out.println("1. Show Stock");
            System.out.println("2. Add New Items");
+           System.out.println("3. Update an Item");
            System.out.println("5. Search an Item");
            System.out.print("Choose an option: ");
            int choice = scan.nextInt();
@@ -27,9 +28,6 @@ public class Main {
                    break;
                case 2:
                    addNewItem();
-                   break;
-                   case 5:
-                   searchItem();
                    break;
                default:
                    System.out.println("Invalid choice. Try again.");
@@ -93,24 +91,9 @@ public class Main {
            prices.add(newPrice);
            quantities.add(newQuantity);
        }
+   }
+
 
 }
-      //search function
-      static void searchItem() {
-        System.out.println("Enter the name of the item to search:");
-        String searchItem = scan.next();
-    
-    
-        boolean found = false;
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).equalsIgnoreCase(searchItem)) {
-                System.out.println("Item found: " + items.get(i) + " - Price: R" + prices.get(i) + " - Quantity: " + quantities.get(i));
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("Item not found.");
-        }
-    }
-}
+
+
