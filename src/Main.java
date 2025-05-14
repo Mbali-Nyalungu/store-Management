@@ -92,8 +92,81 @@ public class Main {
            quantities.add(newQuantity);
        }
    }
+   static void updateItem() {
+    if (items.isEmpty()) {
+        System.out.println("No items to update.");
+        return;
+    }
+    showStock();
+    System.out.println("Enter the index number of the item you want to update:");
+    int itemIndex = scan.nextInt() - 1;
+    // scan.next();
+
+
+    if (itemIndex >= 0 && itemIndex < items.size()) {
+        System.out.println("Enter new name:");
+        items.set(itemIndex, scan.next());
+        System.out.println("Enter new price:");
+        prices.set(itemIndex, scan.nextDouble());
+        System.out.println("Enter new quantity:");
+        quantities.set(itemIndex, scan.nextInt());
+        // scan.next();
+        System.out.println("Item updated.");
+    } else {
+        System.out.println("Invalid index.");
+    }
+}
+
+
+//remove
+static void removeItem() {
+    if (items.isEmpty()) {
+        System.out.println("No items to remove.");
+        return;
+    }
+
+
+    showStock();
+    System.out.println("Enter the index number of the item you want to remove:");
+    int itemIndex = scan.nextInt() - 1;
+    // scan.next();
+
+
+    if (itemIndex >= 0 && itemIndex < items.size()) {
+        System.out.println("Removing: " + items.get(itemIndex));
+        items.remove(itemIndex);
+        prices.remove(itemIndex);
+        quantities.remove(itemIndex);
+        System.out.println("Item removed.");
+    } else {
+        System.out.println("Invalid index.");
+    }
+}
+
+
+//search function
+static void searchItem() {
+    System.out.println("Enter the name of the item to search:");
+    String searchItem = scan.next();
+
+
+    boolean found = false;
+    for (int i = 0; i < items.size(); i++) {
+        if (items.get(i).equalsIgnoreCase(searchItem)) {
+            System.out.println("Item found: " + items.get(i) + " - Price: R" + prices.get(i) + " - Quantity: " + quantities.get(i));
+            found = true;
+            break;
+        }
+    }
+    if (!found) {    System.out.println("Item not found.");
+}
+}
 
 
 }
+
+
+
+
 
 
