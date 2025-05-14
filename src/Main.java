@@ -5,61 +5,74 @@ import java.util.Scanner;
 public class Main {
 
    static ArrayList<String> items = new ArrayList<>();
-   static ArrayList<Double> prices = new ArrayList<>();
+   static ArrayList<Float> prices = new ArrayList<>();
    static ArrayList<Integer> quantities = new ArrayList<>();
    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         //this is our store manager
-       preloadItems();
-       while (true) {
-           System.out.println("\n--- Store Management System ---");
-           System.out.println("1. Show Stock");
-           System.out.println("2. Add New Items");
-           System.out.println("3. Update an Item");
-           System.out.println("5. Search an Item");
-           System.out.print("Choose an option: ");
-           int choice = scan.nextInt();
-           // scan.next();
 
+        preloadItems();
+        while (true) {
+            System.out.println("\n--- Store Management System ---");
+            System.out.println("1. Show Stock");
+            System.out.println("2. Add New Items");
+            System.out.println("3. Update an Item");
+            System.out.println("4. Remove an Item");
+            System.out.println("5. Search an Item");
+            System.out.println("6. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scan.nextInt();
+            // scan.next();
+ 
+ 
+            switch (choice) {
+                case 1:
+                    showStock();
+                    break;
+                case 2:
+                    addNewItem();
+                    break;
+                case 3:
+                    updateItem();
+                    break;
+                case 4:
+                    removeItem();
+                    break;
+                    case 5:
+                    searchItem();
+                    break;
+                case 6:
+ 
 
-           switch (choice) {
-               case 1:
-                   showStock();
-                   break;
-               case 2:
-                   addNewItem();
-                   break;
-               default:
-                   System.out.println("Invalid choice. Try again.");
-           }
+       
        }
    }
 
-
+    }
 
    static void preloadItems() {
        items.add("Sugar");
-       prices.add(2.5);
+       prices.add(2.5f);
        quantities.add(10);
 
 
        items.add("Maize");
-       prices.add(3.0);
+       prices.add(3.00f);
        quantities.add(20);
 
 
        items.add("Rice");
-       prices.add(4.0);
+       prices.add(4.00f);
        quantities.add(15);
 
 
        items.add("Beans");
-       prices.add(1.5);
+       prices.add(1.5f);
        quantities.add(25);
 
 
        items.add("Flour");
-       prices.add(2.0);
+       prices.add(2.0f);
        quantities.add(30);
    }
 
@@ -88,7 +101,7 @@ public class Main {
 
 
            items.add(newItem);
-           prices.add(newPrice);
+           prices.add((float) newPrice);
            quantities.add(newQuantity);
        }
    }
@@ -107,7 +120,7 @@ public class Main {
         System.out.println("Enter new name:");
         items.set(itemIndex, scan.next());
         System.out.println("Enter new price:");
-        prices.set(itemIndex, scan.nextDouble());
+        prices.set(itemIndex, scan.nextFloat());
         System.out.println("Enter new quantity:");
         quantities.set(itemIndex, scan.nextInt());
         // scan.next();
