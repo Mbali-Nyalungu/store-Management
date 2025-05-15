@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,6 +10,7 @@ public class Main {
    static ArrayList<Integer> quantities = new ArrayList<>();
    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
+
         //this is our store manager
         preloadItems();
         while (true) {
@@ -36,14 +38,14 @@ public class Main {
                 case 4:
                     removeItem();
                     break;
-                    case 5:
+                case 5:
                     searchItem();
                     break;
                 case 6:
- 
+                System.out.println("Exiting..");
+                return;
        }
-   }
-
+      }
     }
 
    static void preloadItems() {
@@ -82,25 +84,40 @@ public class Main {
            }
        }
    }
+
 //add item
    static void addNewItem() {
+    try{
        System.out.println("Please enter the number of items you want to add:");
        int numberOfItems = scan.nextInt();
-       for (int i = 0; i < numberOfItems; i++) {
-           System.out.println("Enter the name of item " + (i + 1) + ":");
-           String newItem = scan.next();
-           System.out.println("Enter the price of " + newItem + ":");
-           double newPrice = scan.nextDouble();
-           System.out.println("Enter the quantity of " + newItem + ":");
-           int newQuantity = scan.nextInt();
-           // scan.next();
 
+        for (int i = 0; i < numberOfItems; i++) {
+    
+            System.out.println("Enter the name of item " + (i + 1) + ":");
+            String newItem = scan.next();
+            System.out.println("Enter the price of " + newItem + ":");
+            double newPrice = scan.nextDouble();
+            System.out.println("Enter the quantity of " + newItem + ":");
+            int newQuantity = scan.nextInt();
+            // scan.next();
+ 
+ 
+            items.add(newItem);
+            prices.add((float) newPrice);
+            quantities.add(newQuantity);
+        }
+    
+    }
+    catch(InputMismatchException e){
+        System.out.println("Invalid input, please try again");
+        scan.next();
+      }
 
-           items.add(newItem);
-           prices.add((float) newPrice);
-           quantities.add(newQuantity);
-       }
-   }
+    }
+
+      
+// update items
+
    static void updateItem() {
     if (items.isEmpty()) {
         System.out.println("No items to update.");
@@ -109,8 +126,6 @@ public class Main {
     showStock();
     System.out.println("Enter the index number of the item you want to update:");
     int itemIndex = scan.nextInt() - 1;
-    // scan.next();
-
 
     if (itemIndex >= 0 && itemIndex < items.size()) {
         System.out.println("Enter new name:");
@@ -127,20 +142,18 @@ public class Main {
 }
 
 
-//remove
+//remove items
+
 static void removeItem() {
     if (items.isEmpty()) {
         System.out.println("No items to remove.");
         return;
     }
 
-
     showStock();
     System.out.println("Enter the index number of the item you want to remove:");
     int itemIndex = scan.nextInt() - 1;
-    // scan.next();
-
-
+ 
     if (itemIndex >= 0 && itemIndex < items.size()) {
         System.out.println("Removing: " + items.get(itemIndex));
         items.remove(itemIndex);
@@ -153,7 +166,8 @@ static void removeItem() {
 }
 
 
-//search function
+//search items
+
 static void searchItem() {
     showStock();
     System.out.println("Enter the name of the item to search:");
@@ -168,11 +182,10 @@ static void searchItem() {
             break;
         }
     }
-    if (!found) {    System.out.println("Item not found.");
+    if (!found) {  
+          System.out.println("Item not found.");
 }
 }
-
-
 }
 
 
